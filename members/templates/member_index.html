@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+<!--static-->
+{% load static %}
+<!--content-->
+{% block page_content %}
+<h1>LSI Members</h1>
+<div class="row">
+  {% for member in members %}
+  <!-- grids for pic starts-->
+  <div class="col-md-3">
+    <!--grid of pics end-->
+    <!--image section starts with card-->
+    <div class="card mb-2 bg-light" style="width: 200px">
+      <!--image source-->
+      <img class="card-img-top" src="{% static member.image %}" />
+      <!--card body body-->
+      <div class="card-body">
+        <h7 class="card-title">Name: {{ member.fullname }}</h7>
+        <p class="card-text">Member: {{ member.member }}</p>
+        <!---->
+        <a href="{% url 'member_detail' member.pk %}" class="btn btn-primary">
+          See Details
+        </a>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}
